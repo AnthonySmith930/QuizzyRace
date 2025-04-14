@@ -8,6 +8,6 @@
 import Foundation
 import SwiftUI
 
-@Observable class ViewMode{
+@Observable class ViewMode {
   var title = "Sample Data"
 }
