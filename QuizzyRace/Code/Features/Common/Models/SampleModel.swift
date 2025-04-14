@@ -7,7 +7,6 @@
 
 import Foundation
 
-class SampleModel: Codable{
+class SampleModel: Codable {
     // Code here
 }
-
