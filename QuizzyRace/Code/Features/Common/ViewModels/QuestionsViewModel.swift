@@ -12,10 +12,10 @@ class QuestionsViewModel: ObservableObject {
     @Published var questions: [QuestionModel] = []
 
     func fetchQuestions() {
-        TriviaAPI().fetchTrivia { result in
-            switch result {
+        TriviaAPI().fetchTrivia { resultData in
+            switch resultData {
             case .success(let resultData):
-                self.questions = resultData.results
+                self.questions = resultData
             case .failure(let error):
                 print(error)
             }

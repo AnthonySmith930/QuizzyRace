@@ -12,7 +12,7 @@ struct TriviaAPI {
     private let host: String = "opentdb.com"
     private let path = "/api.php"
     
-    func fetchTrivia(completion: @escaping (Result<QuestionsResponse, Error>) -> Void) {
+    func fetchTrivia(completion: @escaping (Result<[QuestionModel], Error>) -> Void) {
         // TODO: probably want this setup stuff moved to a private function for other api requests
         var components = URLComponents()
         components.scheme = scheme
@@ -37,8 +37,9 @@ struct TriviaAPI {
                 do {
                     let responseData = try JSONDecoder().decode(QuestionsResponse.self, from: data)
                     DispatchQueue.main.async {
-                        completion(.success(responseData))
+                        completion(.success(responseData.results ?? []))
                     }
+
                 } catch {
                     DispatchQueue.main.async {
                         completion(.failure(error))
