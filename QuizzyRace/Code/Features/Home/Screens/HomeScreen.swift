@@ -13,7 +13,7 @@ struct HomeScreen: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(backgroundColor).ignoresSafeArea()
+                Color(backgroundColor).ignoresSafeArea(edges: .all)
                 StartButton()
                     .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {

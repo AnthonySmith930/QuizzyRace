@@ -31,11 +31,12 @@ struct ThreeD: ButtonStyle {
 }
 
 struct StartButton: View {
+    @ObservedObject var viewModel = QuestionsViewModel()
     var body: some View {
-        Button("Start Quiz") {}
-            .foregroundColor(.white)
-            .frame(width: 200, height: 200)
-            .buttonStyle(ThreeD())
+        Button("Start Quiz") { viewModel.fetchQuestions() }
+        .foregroundColor(.white)
+        .frame(width: 200, height: 200)
+        .buttonStyle(ThreeD())
     }
 }
 
